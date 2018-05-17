@@ -8,12 +8,15 @@ html(lang="en")
                     div(class="row")
                         div(class="col s12")
                             div(class="card", style="margin:24px;padding : 24px 0 24px 0;")
-                                h3.center Rédigez votre article !
+                                h3.center Parlez de votre jeu préféré !
                                 div(class="container")
                                     form(action="/api/post/add", method="POST" )
                                         input#author(name="author" style="display:none;" value=user.username)
                                         input#title(name="title", type="text", placeholder="Titre de l'article",style="margin-top:16px;")
                                         input#imgSrc(name="imgSrc", type="text", placeholder="Addresse de l'image",style="margin-top:16px;")
+                                        p.range-field
+                                            span.left Notation du jeu :
+                                            input#mark(name="mark", type="range", min="0", max="5")
                                         textarea#description(name="description", placeholder="Description" class="materialize-textarea", style="margin-top:16px;")
                                         input(class="btn yellow black-text", type="submit", value="Envoyer", style="margin: 24px;")
             if !user
@@ -21,5 +24,6 @@ html(lang="en")
                     div(class="row")
                         div(class="col s12")
                             div(class="card", style="margin:24px;padding : 24px 0 24px 0;")
-                                h4.center Vous devez être connecté pour écrire un article.
+                                h4.center Vous devez être connecté pour écrire un revue de jeu.
                                 a(href="/login") Connexion
+    include footer.pug

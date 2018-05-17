@@ -43,7 +43,6 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-    console.log(req.user);
     if (req.user !== undefined)
         Database.getAllArticlesById(req.user.id, (response)=>{
             res.render("profile", {user : req.user, articles : response});
@@ -57,10 +56,19 @@ app.get("/logout", (req, res)=> {
     res.redirect("/");
 })
 
+app.get("/details/:id", (req, res)=> {
+    Database.getArticleById(req.params.id, (articles)=>{
+        Database.getAllResponseById(req.params.id, (responses)=> {
+            res.render("details", {user : req.user, article : articles, resp :responses});
+        })
+    })
+});
+
 app.post("/api/post/add", (req, res)=> {
     Database.getUserByName(req.body.author, (res)=>{
         Database.createArticle({
             title : req.body.title,
+            mark : req.body.mark,
             author : req.body.author,
             userId : res.id,
             imgSrc : req.body.imgSrc,
@@ -71,7 +79,7 @@ app.post("/api/post/add", (req, res)=> {
 
 app.post("/api/post/ask", (req, res)=> {
     Database.createResponse(req.body);
-    res.redirect("/");
+    res.redirect("/details/" + req.body.articleId);
 });
 
 app.post("/api/post/login", Authentification.passport.authenticate('local', {

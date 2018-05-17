@@ -9,11 +9,11 @@ html(lang="en")
                         h1=user.username
                         img.responsive-img(src=user.icon)
                         br
-                        button.btn.red.center-align(style="margin-top : 24px;")
-                            a.white-text(href="/logout") Deconnexion
+                        a.white-text(href="/logout")
+                            button.btn.red.center-align(style="margin-top : 24px;") Deconnexion
             div.container
                 if articles
-                    h3 Mes articles :
+                    h3 Mes revus de jeux :
                     div.row
                         each article in articles
                             div.col.s12.m6.l4
@@ -25,3 +25,4 @@ html(lang="en")
             div(class="fixed-action-btn")
                             a(href="/write" class="btn-floating yellow btn-large")
                                 i(class="large material-icons black-text") add
+    include footer.pug

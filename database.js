@@ -18,7 +18,8 @@ const Article = db.define('article', {
         title : { type: Sequelize.STRING },
         author : { type: Sequelize.STRING },
         imgSrc : { type: Sequelize.STRING },
-        description : { type: Sequelize.STRING },
+        description : { type: Sequelize.STRING(999999) },
+        mark : { type : Sequelize.INTEGER },
         like : { type: Sequelize.INTEGER, defaultValue : 0 },
         dislike : { type: Sequelize.INTEGER, defaultValue : 0 }
     });
@@ -56,13 +57,20 @@ const getUserByName = (username, next) => {
         });
 }
 
-
 const getAllArticles = (next)=>{
     return Article
         .findAll()
         .then((res) => {
             next(res);
         });
+}
+
+const getArticleById = (articleId, next) =>{
+    return Article
+        .findOne({where : {id : articleId}})
+        .then((res)=>{
+            next(res);
+        })
 }
 
 const getAllArticlesById = (id, next) =>{
@@ -79,6 +87,14 @@ const getAllResponse = (next) => {
         .then((res)=> {
             next(res);
         });
+}
+
+const getAllResponseById = (idArticle, next) => {
+    return Response
+        .findAll({where : {articleId : idArticle}})
+        .then((res)=>{
+            next(res)
+        })
 }
 
 const createUser = (user) => {
@@ -117,6 +133,7 @@ const createArticle = (article)=>{
         .then(()=>{
             Article.create({
                 title : article.title,
+                mark : article.mark,
                 author : article.author,
                 userId : article.userId,
                 imgSrc : article.imgSrc,
@@ -145,8 +162,10 @@ module.exports =
     getAllUsers : getAllUsers,
     getUserByName : getUserByName,
     getAllArticles : getAllArticles,
+    getArticleById : getArticleById,
     getAllArticlesById : getAllArticlesById,
     getAllResponse : getAllResponse,
+    getAllResponseById : getAllResponseById,
     createUser : createUser,
     createArticle : createArticle,
     createResponse : createResponse,

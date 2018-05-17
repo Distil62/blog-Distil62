@@ -10,49 +10,19 @@ html(lang="en")
                             img(src=article.imgSrc)
                             span.card-title(id=article.id)=article.title
                         div.card-content
-                            p=article.description
+                            p
+                                - var i = 0;
+                                while i < article.mark
+                                    i.material-icons.amber-text(style="font-size:32px;") star
+                                    - i++
                             p.right
                                 i=article.author
-                            if user
-                                div.card-action
-                                    button.btn-flat.waves-effect.waves-green.green-text(onClick="like(" + article.id + ", \"" + user.articleLiked + "\", \"like\");")
-                                        i.material-icons thumb_up
-                                        span(id="like" + article.id)=article.like
-                                    button.btn-flat.waves-effect.waves-red.red-text(onClick="like(" + article.id + ", \"" + user.articleLiked + "\", \"dislike\");")
-                                        i.material-icons thumb_down
-                                        span(id="dislike" + article.id)=article.dislike
-                                    form(action="/api/post/ask", method="POST")
-                                        div.row
-                                            input(name="articleId", style="display : none;" value=article.id)
-                                            input.col.s3(name="authorRes", value=user.username, placeholder="Entrez votre pseudo" style="display:none;")
-                                        textarea#askContent(name="contentRes", placeholder="Ecrivez votre réponse" class="materialize-textarea" required)
-                                        input.btn.yellow.black-text(type="submit", value="Répondre")
-                                        
-                                            
-                            div(style="margin-top:24px;")
-                                ul.collapsible.row
-                                    li
-                                        div.collapsible-header
-                                            span Voir les réponses
-                                            i.material-icons arrow_drop_down
-                                        div.collapsible-body
-                                            ul.collection
-                                                if resp.length > 0
-                                                    each response in resp
-                                                        if response.articleId == article.id 
-                                                            li.collection-item
-                                                                h6=response.authorRes
-                                                                p(style="position : relative; left:16px;")=response.contentRes
-                                                if resp.length == 0
-                                                    li.collection-item
-                                                        if user
-                                                            p Soit le premier à commenter cet article !
-                                                        else
-                                                            a(href="/login") Connecte toi 
-                                                            span et soit le premier à commenter cet article !
+                            div.card-action
+                                div.center-align
+                                    a(href="/details/" + article.id)
+                                        button.btn.orange.black-text Voir la game Review
                                                             
             div(class="fixed-action-btn")
-                            a(href="/write" class="btn-floating yellow btn-large")
+                            a(href="/write" class="btn-floating orange btn-large")
                                 i(class="large material-icons black-text") add
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js")
-    
+    include footer.pug    
