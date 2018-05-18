@@ -1,23 +1,23 @@
-# blog
+# JeuxVideo.com Le retour
 
-Create a blog with a single page listing articles and a form to post a new one.
-An article should have at least the `title` and `content` properties.
+[logo](./public/icon48.png)
+
+Website of game reviews
+Register / Connect and start to write reviews about your favorites games !
 
 ## demo
 
-Demo avaiable on this [website](https://blog-distil62-cibonwqkiu.now.sh/)
+Demo avaiable on this [website](https://blog-distil62-fpsjxlvpul.now.sh/)
 
-## Step by step
+## Cerdits
 
-1. Get a copy of this repository
-2. Clone it on your computer
-3. Create a new branch for your work
-4. Initialize a new Node.js project, install the required dependencies
-5. Start by rendering a simple home page with a form to create an article
-6. Setup Sequelize and [test the connection](http://docs.sequelizejs.com/manual/installation/getting-started.html#test-the-connection)
-7. Add a route accepting the form's POST request
-8. Create a new article on form submission
-9. Get all articles when visiting the page, pass them to the template
-10. List the articles
-7. Commit and push your changes
-8. Visit your GitHub repository to create a pull request
+Thank to open-source contributors of :
+1. [ExpressJs](https://expressjs.com/)
+2. [SequelizeJs](https://github.com/sequelize/sequelize)
+3. [PassportJs](http://www.passportjs.org/)
+
+For web-hosting demo :
+[Zeit](https://zeit.co/)
+
+For database hosting :
+[FreeHosting](http://freemysqlhosting.net/)
