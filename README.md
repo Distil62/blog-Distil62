@@ -2,14 +2,14 @@
 
 ![logo](public/icon128.png)
 
-Website of game reviews
+Website of game reviews.
 Register / Connect and start to write reviews about your favorites games !
 
-## demo
+## Demo
 
 Demo avaiable on this [website](https://blog-distil62-fpsjxlvpul.now.sh/)
 
-## Cerdits
+## Credits
 
 Thank to open-source contributors of :
 1. [ExpressJs](https://expressjs.com/)
