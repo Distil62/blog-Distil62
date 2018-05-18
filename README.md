@@ -1,6 +1,6 @@
 # JeuxVideo.com Le retour
 
-![logo](public/icon48.png)
+![logo](public/icon128.png)
 
 Website of game reviews
 Register / Connect and start to write reviews about your favorites games !
