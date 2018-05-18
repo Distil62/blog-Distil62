@@ -25,10 +25,8 @@ app.use(Authentification.passport.session());
 
 app.get("/", (req, res) => {
     Database.getAllArticles((data)=>{
-        Database.getAllResponse((responses) => {
-            res.render("index", {data : data, resp : responses, user : req.user});
-        })
-    })
+        res.render("index", {data : data, user : req.user});
+    });
 });
 
 app.get("/write", (req, res) => {

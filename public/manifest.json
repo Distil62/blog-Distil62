@@ -5,12 +5,29 @@
     "default_locale": "en",
     "description": "Site de revue de jeux vidéos.",
     "start_url": "/",
-    "icons": {
-
-    },
+    "orientation" : "portrait",
+    "background_color" : "#FF9800",
+    "theme_color" : "#FF9800",
+    "icons": [
+      {
+        "src": "icon16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      },
+      {
+        "src": "icon48.png",
+        "sizes": "48x48",
+        "type": "image/png"
+      },
+      {
+        "src": "icon128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      }
+    ],
     "theme": {
         "images": {
-          "headerURL": "images/sun.jpg"
+          "headerURL": "icon128.png"
         },
         "colors": {
           "accentcolor": "#FF9800",
