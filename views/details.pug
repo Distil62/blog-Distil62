@@ -20,12 +20,13 @@ html(lang="en")
                 p.right
                     span Revue rédigée par :
                     i=article.author
-                button.btn-flat.waves-effect.waves-green.green-text(onClick="like(" + article.id + ", \"" + user.articleLiked + "\", \"like\");")
-                    i.material-icons thumb_up
-                    span(id="like" + article.id)=article.like
-                button.btn-flat.waves-effect.waves-red.red-text(onClick="like(" + article.id + ", \"" + user.articleLiked + "\", \"dislike\");")
-                    i.material-icons thumb_down
-                    span(id="dislike" + article.id)=article.dislike
+                if user
+                    button.btn-flat.waves-effect.waves-green.green-text(onClick="like(" + article.id + ", \"" + user.articleLiked + "\", \"like\");")
+                        i.material-icons thumb_up
+                        span(id="like" + article.id)=article.like
+                    button.btn-flat.waves-effect.waves-red.red-text(onClick="like(" + article.id + ", \"" + user.articleLiked + "\", \"dislike\");")
+                        i.material-icons thumb_down
+                        span(id="dislike" + article.id)=article.dislike
                 h4 Commentaires :
                 if user
                     form(action="/api/post/ask", method="POST")

@@ -5,6 +5,7 @@ const bodyParser        = require('body-parser')
 const hash              = require('hash.js')
 const Database          = require('./database.js');
 const Authentification  = require('./authentification.js');
+var request = require('request');
 
 const app = express();
 
@@ -65,6 +66,16 @@ app.get("/details/:id", (req, res)=> {
 });
 
 app.post("/api/post/add", (req, res)=> {
+
+    request({
+        uri : req.body.imgSrc,
+        method : "GET",
+        followRedirect: true
+    }, (err, imgRes, imgBody)=>{
+            if (imgRes == undefined)
+                req.body.imgSrc = "http://st2.depositphotos.com/4126649/8061/v/950/depositphotos_80619126-stock-illustration-flat-design-game-icons.jpg";
+    } )
+    
     Database.getUserByName(req.body.author, (res)=>{
         Database.createArticle({
             title : req.body.title,
@@ -94,6 +105,7 @@ app.post("/api/post/register", (req, res)=> {
 });
 
 app.post("/api/post/:type/:id", (req, res)=>{
+    
     Database.likeArticle(req.user.id, req.params.id, req.params.type);
 })
 
