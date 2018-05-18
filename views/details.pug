@@ -5,9 +5,9 @@ html(lang="en")
             include nav.pug
             div.container
                 div.center-align
-                    div.card
-                        img.responsive-img(src=article.imgSrc)
+                    img.responsive-img.z-depth-3(src=article.imgSrc)
                 h1=article.title
+                h4 Notation de l'auteur :
                 p
                     - var i = 0;
                     while i < article.mark
